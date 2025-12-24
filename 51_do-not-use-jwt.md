@@ -1,3 +1,122 @@
+# JWT Token in Node.js
+
+## 1. What is JWT?
+
+JWT (JSON Web Token) is a **stateless authentication mechanism**.
+
+Important truths: - JWT is **NOT encryption** - JWT is **NOT session
+storage** - JWT is a **signed token** used to verify identity
+
+**Simple definition:**\
+JWT = proof that the server trusts the user.
+
+------------------------------------------------------------------------
+
+## 2. Why JWT is Used
+
+-   No server-side session storage
+-   Scales easily (microservices, distributed systems)
+-   Standard for REST APIs
+-   Works for web + mobile apps
+-   Faster than DB-based sessions
+
+------------------------------------------------------------------------
+
+## 3. JWT Structure
+
+JWT has **three parts**, separated by dots:
+
+    HEADER.PAYLOAD.SIGNATURE
+
+### Header
+
+-   Algorithm (HS256, RS256)
+-   Token type (JWT)
+
+### Payload
+
+-   User data (claims)
+-   Example: userId, role, email
+
+⚠️ Never store passwords or secrets here.
+
+### Signature
+
+-   Created using secret/private key
+-   Prevents tampering
+
+------------------------------------------------------------------------
+
+## 4. Beginner Level 
+
+Think of JWT as a **signed ID card**: - You login - Server gives you an
+ID card (JWT) - You show that card every time - Server checks the
+signature and allows access
+
+No card → No entry.
+
+------------------------------------------------------------------------
+
+## 5. Intermediate Level
+
+JWT is used in **authentication middleware**.
+
+Flow: 1. User logs in 2. Server generates JWT 3. Client stores token 4.
+Client sends token in every request
+
+    Authorization: Bearer <JWT_TOKEN>
+
+Server verifies token before giving access.
+
+------------------------------------------------------------------------
+
+## 6. Advanced Level 
+
+Real systems use: - **Access Token** (short-lived, e.g., 15 min) -
+**Refresh Token** (long-lived)
+
+Rules: - Access token goes in headers - Refresh token stored securely
+(HttpOnly cookie) - Tokens expire (mandatory) - JWT payload is Base64
+encoded, NOT encrypted
+
+------------------------------------------------------------------------
+
+## 7. JWT in Node.js (Conceptual)
+
+Library used: - `jsonwebtoken`
+
+Core functions: - `jwt.sign(payload, secret, options)` -
+`jwt.verify(token, secret)`
+
+JWT is usually verified in **middleware**.
+
+------------------------------------------------------------------------
+
+## 8. Common Mistakes (Freshers Fail Here)
+
+-   Storing password in JWT payload
+-   No expiry time
+-   Using JWT for logout without strategy
+-   Believing JWT is encrypted
+-   Sending JWT over HTTP instead of HTTPS
+
+These mistakes = rejection.
+
+------------------------------------------------------------------------
+
+## 9. Security Rules
+
+-   Always use HTTPS
+-   Set token expiry
+-   Use HttpOnly cookies if possible
+-   Rotate secrets
+-   Keep payload minimal
+-   Protect against XSS and CSRF
+
+JWT is safe only if **you are disciplined**.
+
+
+
 # ❌ Why You Should Not Use JWTs for Login Sessions
 
 JSON Web Tokens (JWTs) are often marketed as a modern solution for authentication. While they are useful in some contexts (like stateless service-to-service communication), **they are not ideal for client-server login authentication** — especially when used in place of traditional session management.
