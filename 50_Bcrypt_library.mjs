@@ -7,6 +7,17 @@ import bcrypt from 'bcrypt'
 
 
 
+// await bcrypt.hash('our password or any thing', salt);
+// Salt can be number or stirng but we are not able to give salt as a string 
+// Because , A bcrypt “salt string” contains critical configuration data:
+
+// $2b$10$eImiTXuWVxfM37uY4JANjQ
+// │ │ │  └─────────────── random salt (22 chars)
+// │ │ └── cost factor (work factor)
+// │ └── algorithm version
+// └── identifier
+
+
 const salt = await bcrypt.genSalt(10) //$2b$10$FPWnvQ8Kb8J/CsYNMSlZHu  (here 10 represent the number of round salt is hashed)
 console.log(salt)
 
