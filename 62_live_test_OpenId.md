@@ -13,7 +13,7 @@
 <body style="background-color: #27292d; color: white;">
     <h1>Hello World!</h1>
     <a style="color: white;"
-        href="https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=594555697613-frlbih3lo0j312qeab8om357glb6l7ft.apps.googleusercontent.com&scope=openid email profile&redirect_uri=http://localhost:5500">Login
+        href="https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id={putt yout client id}&scope=openid email profile&redirect_uri=http://localhost:5500">Login
         with Google</a> 
         <!-- ye humko authorization code dega aur usse hmm it token fetch karenge  -->
 </body>
@@ -25,7 +25,7 @@
 ```js
 const code = new URLSearchParams(location.search).get("code"); // ye url se hmm code ko direct le le rahe hai 
 const clientId =
-  "594555697613-frlbih3lo0j312qeab8om357glb6l7ft.apps.googleusercontent.com";
+  "putt {yout client id}";
 const clientSecret = "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";
 const redirectUrl = "http://localhost:5500";
 
