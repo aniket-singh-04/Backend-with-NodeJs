@@ -21,9 +21,8 @@
 ```js
 const button = document.querySelector("button");
 
-const clientId =
-  "Yout client id";
-const clientSecret = "Your Secret";
+const clientId = " "; // your client id 
+const clientSecret = ""; // your secrete 
 const redirectUrl = "http://localhost:5500";
 const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${clientId}&scope=openid email profile&redirect_uri=${redirectUrl}`;
 
